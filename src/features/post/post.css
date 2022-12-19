@@ -1,0 +1,85 @@
+.post-container {
+    display: flex;
+    margin: 3rem 1rem;
+    padding: 2rem 1rem;
+    border: 0.1rem solid lightgray;
+    border-radius: 5rem;
+    background-color: white;
+    max-width: 50rem;
+}
+
+.post-info-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.media-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+}
+
+
+.video-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.votes-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.media-heading {
+    margin: 1rem;
+}
+
+.arrow-img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.vote-arrow-btn {
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 1rem;
+}
+
+.comments-icon {
+    width: 1rem;
+    margin-right: 0.5rem;
+}
+
+.comments-button {
+    background-color: transparent;
+    border-color: transparent;
+    display: flex;
+    align-items: center;
+}
+
+.vote-arrow-btn:hover, .comments-button:hover {
+    background-color: rgb(252, 252, 252);
+}
+
+.vote-arrow-btn:active, .comments-button:active {
+    background-color: rgb(250, 250, 250);
+}
+
+.media {
+    max-width: 35rem;
+    min-width: 30rem;
+}
+
+.youtube-video {
+    max-width: 35rem;
+    min-width: 30rem;
+    min-height: 16.881rem;
+    max-height: 19.695rem;
+}
+
+.info-element {
+    margin: auto 0.5rem;
+}
