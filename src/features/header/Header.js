@@ -21,11 +21,14 @@ export const Header = () => {
                 dispatch(fetchSearchedSubreddits(searchTerm));
             }
             dispatch(setSearchTerm(""));
-            history.push("/searchResults")
+            
         } else {
             alert("Please enter a search term");
         }
         dispatch(setSearchTerm(""));
+        setTimeout(() => {
+            history.push("/searchResults");
+        }, 1000);
     }
 
     const handleBarChange = (e) => {
