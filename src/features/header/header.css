@@ -48,3 +48,15 @@
     border: 0.1rem solid lightgray;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 1020px) {
+    .header-searchbar {
+        width: auto;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .header-title {
+        display: none;
+    }
+}

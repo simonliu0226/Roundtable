@@ -14,3 +14,19 @@
     border-radius: 2rem;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 1040px) {
+    .subreddit-button {
+        font-size: 0.7rem;
+        padding: 2rem;
+    }
+}
+
+@media only screen and (max-width: 380px) {
+    .subreddit-button {
+        display: flex;
+        width: 10rem;
+        align-items: center;
+        justify-content: center;
+    }
+}

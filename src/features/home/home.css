@@ -9,3 +9,10 @@
     position: relative;
     top: 1rem;
 }
+
+@media only screen and (max-width: 400px) {
+    .subreddit-name {
+        position: relative;
+        left: 7rem;
+    }
+}
