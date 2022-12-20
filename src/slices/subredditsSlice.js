@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useHistory } from "react-router-dom";
 import { getSubreddits, searchSubreddits } from "../api/reddit";
 
 const initialState = {
-    subreddits: []
+    subreddits: [],
+    searchedSubreddits: []
 }
 
 const subredditsSlice = createSlice ({
@@ -12,6 +12,9 @@ const subredditsSlice = createSlice ({
     reducers: {
         setSubreddits: (state, action) => {
             state.subreddits = action.payload;
+        },
+        setSearchedSubreddits: (state, action) => {
+            state.searchedSubreddits = action.payload;
         }
     }
 });
@@ -27,10 +30,9 @@ export const fetchSubreddits = () => async (dispatch) => {
 
 export const fetchSearchedSubreddits = (searchTerm) => async (dispatch) => {
     try {
-        const history = useHistory();
         const subreddits = await searchSubreddits(searchTerm);
-        history.push("/searchResults");
-        dispatch(setSubreddits(subreddits));
+        if (!subreddits) return;
+        dispatch(setSearchedSubreddits(subreddits));
     } catch (err) {
         console.log(err);
     }
@@ -38,5 +40,6 @@ export const fetchSearchedSubreddits = (searchTerm) => async (dispatch) => {
 
 
 export const selectSubreddits = (state) => state.subreddits.subreddits;
-export const { setSubreddits } = subredditsSlice.actions;
+export const selectSearchedSubreddits = (state) => state.subreddits.searchedSubreddits;
+export const { setSubreddits, setSearchedSubreddits } = subredditsSlice.actions;
 export default subredditsSlice.reducer;

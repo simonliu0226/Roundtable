@@ -4,3 +4,8 @@
     flex-direction: column;
     align-items: center;
 }
+
+.subreddit-name {
+    position: relative;
+    top: 1rem;
+}

@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useHistory } from "react-router-dom";
 import { getSubredditPosts, searchPosts } from "../api/reddit";
 
 const initialState = {
     posts: [],
-    selectedSubreddit: "/r/videos/"
+    searchedPosts: [],
+    selectedSubreddit: "/r/pics/"
 }
 
 const redditPostsSlice = createSlice({
@@ -14,8 +14,13 @@ const redditPostsSlice = createSlice({
         setPosts: (state, action) => {
             state.posts = action.payload;
         },
+        setSearchedPosts: (state, action) => {
+            state.searchedPosts = action.payload;
+        },
         setSelectedSubreddit: (state, action) => {
-            state.selectedSubreddit = action.payload;
+            if (action.payload) {
+                state.selectedSubreddit = action.payload;
+            }
         }
     }
 });
@@ -31,10 +36,8 @@ export const fetchPosts = (subreddit) => async (dispatch) => {
 
 export const fetchSearchedPosts = (searchTerm) => async (dispatch) => {
     try {
-        const history = useHistory();
         const posts = await searchPosts(searchTerm);
-        history.push("/searchResults");
-        dispatch(setPosts(posts));
+        dispatch(setSearchedPosts(posts));
     } catch (err) {
         console.log(err);
     }
@@ -42,6 +45,7 @@ export const fetchSearchedPosts = (searchTerm) => async (dispatch) => {
 
 
 export const selectPosts = (state) => state.redditPosts.posts;
+export const selectSearchedPosts = (state) => state.redditPosts.searchedPosts;
 export const selectSubreddit = (state) => state.redditPosts.selectedSubreddit;
-export const { setPosts, setSelectedSubreddit } = redditPostsSlice.actions;
+export const { setPosts, setSearchedPosts, setSelectedSubreddit } = redditPostsSlice.actions;
 export default redditPostsSlice.reducer;

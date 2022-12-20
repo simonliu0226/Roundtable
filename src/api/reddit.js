@@ -8,13 +8,13 @@ export const getSubredditPosts = async (subreddit) => {
 };
 
 export const searchPosts = async (searchTerm) => {
-    const response = await fetch(`${API_ROOT}/search.json?q=${searchTerm}`);
+    const response = await fetch(`${API_ROOT}/search/.json?q=${searchTerm}`);
     const json = await response.json();
     return json.data.children.map((post) => post.data);
 };
 
 export const searchSubreddits = async (searchTerm) => {
-    const response = await fetch(`${API_ROOT}/search.json?q=${searchTerm}&type=sr`);
+    const response = await fetch(`${API_ROOT}/search/.json?q=${searchTerm}&type=sr`);
     const json = await response.json();
     return json.data.children.map((subreddit) => subreddit.data);
 };

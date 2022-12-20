@@ -86,7 +86,6 @@ export const Post = ({ header, author, score, num_comments, created_epoch, is_vi
 
     const handleCommentPress = () => {
         dispatch(setPostData({header, author, score, num_comments, created_epoch, is_video, mediaURL, embedHTML, redditVideoURL, selftext, permalink}));
-        console.log("Idk");
         dispatch(fetchComments(permalink));
         history.push("/comments");
     }

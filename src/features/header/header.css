@@ -15,6 +15,11 @@
     max-width: 4rem;
     min-height: 3rem;
     max-height: 4rem;
+    cursor: pointer;
+}
+
+.header-title {
+    cursor: pointer;
 }
 
 .search-container {

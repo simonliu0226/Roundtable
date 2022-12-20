@@ -1,10 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import { Home } from './features/home/Home';
 import { Header} from './features/header/Header';
 import { Subreddits } from './features/subreddits/Subreddits';
 import { CommentsPage } from './features/comments/CommentsPage';
+import { SearchResults } from './features/search/searchResults/SearchResults';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route exact path="/comments">
           <CommentsPage />
+        </Route>
+        <Route exact path="/searchResults">
+          <SearchResults />
         </Route>
     </Router>
   );
