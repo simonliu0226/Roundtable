@@ -39,7 +39,7 @@
 .header-select {
     border-radius: 0.75rem;
     border: 0.1rem solid lightgray;
-    width: 6rem;
+    width: auto;
     cursor: pointer;
 }
 

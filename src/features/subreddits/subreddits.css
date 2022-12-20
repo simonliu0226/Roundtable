@@ -22,11 +22,22 @@
     }
 }
 
-@media only screen and (max-width: 380px) {
+@media only screen and (max-width: 600px) {
+    .subreddits-container {
+        position: relative;
+        right: 2.5rem;
+    }
+}
+
+@media only screen and (max-width: 390px) {
     .subreddit-button {
         display: flex;
         width: 10rem;
         align-items: center;
         justify-content: center;
     }
+    .subreddits-container {
+        right: 3rem;
+    }
 }
+
