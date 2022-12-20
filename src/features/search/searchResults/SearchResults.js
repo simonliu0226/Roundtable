@@ -4,6 +4,7 @@ import { selectSearchType } from "../../../slices/searchSlice";
 import { selectSearchedPosts } from "../../../slices/redditPostsSlice";
 import { selectSearchedSubreddits } from "../../../slices/subredditsSlice";
 import { setSelectedSubreddit } from "../../../slices/redditPostsSlice";
+import { useEffect } from "react";
 import { Post } from "../../post/Post";
 import "./searchResults.css";
 
@@ -19,6 +20,10 @@ export const SearchResults = () => {
         dispatch(setSelectedSubreddit(e.currentTarget.value));
         history.push("/");
     }
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [posts, subreddits]);
 
 
     if (searchType === "posts" && posts.length) {

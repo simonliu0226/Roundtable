@@ -12,6 +12,7 @@ export const Home = () => {
     
     useEffect(() => {
         dispatch(fetchPosts(selectedSubreddit));
+        window.scrollTo(0,0);
     }, [selectedSubreddit]);
 
 

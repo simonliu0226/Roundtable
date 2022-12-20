@@ -28,7 +28,7 @@ export const Header = () => {
         dispatch(setSearchTerm(""));
         setTimeout(() => {
             history.push("/searchResults");
-        }, 1000);
+        }, 1200);
     }
 
     const handleBarChange = (e) => {
