@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getSubredditPosts } from "../api/reddit";
+import { useHistory } from "react-router-dom";
+import { getSubredditPosts, searchPosts } from "../api/reddit";
 
 const initialState = {
     posts: [],
@@ -27,6 +28,17 @@ export const fetchPosts = (subreddit) => async (dispatch) => {
         console.log(err);
     }
 };
+
+export const fetchSearchedPosts = (searchTerm) => async (dispatch) => {
+    try {
+        const history = useHistory();
+        const posts = await searchPosts(searchTerm);
+        history.push("/searchResults");
+        dispatch(setPosts(posts));
+    } catch (err) {
+        console.log(err);
+    }
+}
 
 
 export const selectPosts = (state) => state.redditPosts.posts;

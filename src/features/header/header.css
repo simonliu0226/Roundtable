@@ -7,6 +7,7 @@
     height: 4.5rem;
     border-bottom: 1px solid lightgray;
     z-index: 2;
+    top: 0;
 }
 
 .header-logo {
@@ -18,4 +19,27 @@
 
 .search-container {
     margin: auto auto;
+    display: flex;
+    position: relative;
+}
+
+.header-searchbar {
+    width: 40rem;
+    height: 2rem;
+    border-radius: .75rem;
+    border: 0.1rem solid lightgray;
+    font-size: 1.25rem;
+}
+
+.header-select {
+    border-radius: 0.75rem;
+    border: 0.1rem solid lightgray;
+    width: 6rem;
+    cursor: pointer;
+}
+
+.header-search-button {
+    border-radius: 0.75rem;
+    border: 0.1rem solid lightgray;
+    cursor: pointer;
 }

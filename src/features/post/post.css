@@ -58,6 +58,7 @@
     border-color: transparent;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .vote-arrow-btn:hover, .comments-button:hover {
@@ -82,4 +83,9 @@
 
 .info-element {
     margin: auto 0.5rem;
+}
+
+.video-link {
+    position: relative;
+    bottom: 1rem;
 }

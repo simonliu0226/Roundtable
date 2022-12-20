@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import upArrowFilled from "../../assets/UpArrowFilled.png";
 import upArrowOutline from "../../assets/UpArrowOutline.png";
 import downArrowFilled from "../../assets/DownArrowFilled.png";
@@ -6,13 +8,16 @@ import downArrowOutline from "../../assets/DownArrowOutline.png";
 import comments from "../../assets/comments.png";
 import { abbreviateNum } from "../../util/abbreviateNum";
 import { convertToTimeAgo } from "../../util/convertToTimeAgo";
+import { setPostData, fetchComments } from "../../slices/commentsSlice";
 import "./post.css";
 
-export const Post = ({ header, author, score, num_comments, created_epoch, is_video, mediaURL, embedHTML, redditVideoURL, selftext }) => {
+export const Post = ({ header, author, score, num_comments, created_epoch, is_video, mediaURL, embedHTML, redditVideoURL, selftext, permalink }) => {
     const [voteValue, setVoteValue] = useState(0);
     const votes = abbreviateNum(score);
     const numComments = abbreviateNum(num_comments);
     const timeAgo = convertToTimeAgo(created_epoch);
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const renderUpVote = () => {
         if (voteValue === 1) {
@@ -79,6 +84,13 @@ export const Post = ({ header, author, score, num_comments, created_epoch, is_vi
         }
     }
 
+    const handleCommentPress = () => {
+        dispatch(setPostData({header, author, score, num_comments, created_epoch, is_video, mediaURL, embedHTML, redditVideoURL, selftext, permalink}));
+        console.log("Idk");
+        dispatch(fetchComments(permalink));
+        history.push("/comments");
+    }
+
 
 
     return (
@@ -86,7 +98,7 @@ export const Post = ({ header, author, score, num_comments, created_epoch, is_vi
             <div className="votes-container">
                 {renderUpVote()}
                 <p className="votes-count">
-                    {votes}
+                    {parseInt(votes, 10) + voteValue}
                 </p>
                 {renderDownVote()}
             </div>
@@ -101,7 +113,7 @@ export const Post = ({ header, author, score, num_comments, created_epoch, is_vi
                 <div className="post-info-container">
                     <p className="post-author info-element">Posted by: u/{author}</p>
                     <p className="posted-time info-element">{timeAgo}</p>
-                    <button className="comments-button info-element" onClick={() => {alert('Comments');}}>
+                    <button className="comments-button info-element" onClick={handleCommentPress}>
                         <img className="comments-icon" src={comments} alt="Comments" />
                         <p className="num-post-comments">{numComments} Comments</p>
                     </button>

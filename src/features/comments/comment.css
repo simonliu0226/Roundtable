@@ -1,0 +1,9 @@
+.comment-container {
+    border: 0.1rem solid lightgray;
+    padding: 1.25rem;
+    max-width: 60rem;
+    border-radius: 3rem;
+    margin: 0.75rem;
+    position: relative;
+    top: -1rem;
+}
